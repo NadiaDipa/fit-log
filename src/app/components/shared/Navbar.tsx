@@ -9,7 +9,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <header className="bg-[#1E1E1E]">
+    <nav className="bg-[#1E1E1E]">
       <div className="navbar shadow-sm container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -98,7 +98,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
