@@ -9,8 +9,8 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-[#1E1E1E]">
-      <div className="navbar shadow-sm container mx-auto">
+    <nav className="bg-[#1E1E1E] ">
+      <div className="navbar shadow-sm container mx-auto py-8">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost text-white lg:hidden">
@@ -51,7 +51,7 @@ const Navbar = () => {
                 height={28}
                 className="w-7 h-7 object-contain"
               />
-              <span className="text-[#FFFFFF]">FITLOG</span>
+              <span className="text-[#FFFFFF] font-oswald text-2xl">FITLOG</span>
             </Link>
           </div>
         </div>
@@ -62,14 +62,14 @@ const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold text-[#C2F800]`}>
+                className={`px-4 py-1.5 rounded-full text-[14px]  text-[#C2F800] font-inter bg-[#C2F800]/5`}>
                 Workouts
               </Link>
             </li>
             <li>
               <Link
                 href="/my-plan"
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold text-[#9CA3AF]`}>
+                className={`px-4 py-1.5 rounded-full  text-[14px]  text-[#9CA3AF] font-inter`}>
                 My Plan
               </Link>
             </li>
@@ -82,17 +82,19 @@ const Navbar = () => {
             <li>
               <Link
                 href="/plan"
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold text-[#D1D5DB]`}
+                className={`px-4 py-1.5 rounded-full font-semibold text-[#D1D5DB] text-[14px]`}
               >
                 Plan
+                   <div className="badge bg-[#C2F800] border-0 btn-circle ml-3">0</div>
               </Link>
             </li>
             <li>
               <Link
                 href="/saved"
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold text-[#9CA3AF]`}
+                className={`px-4 py-1.5 rounded-full text-[14px]  text-[#9CA3AF]`}
               >
                 Saved
+                <div className="badge bg-[#1E1E1E] border-gray-700 btn-circle ml-3 text-white ">0</div>
               </Link>
             </li>
           </ul>
