@@ -9,11 +9,13 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-[#1E1E1E] ">
-      <div className="navbar shadow-sm container mx-auto py-8">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost text-white lg:hidden">
+    <nav className="bg-[#1E1E1E]">
+      <div className="navbar container mx-auto py-4 px-4 lg:py-8">
+        {/* Left Side: Mobile Menu & Desktop Logo */}
+        <div className="navbar-start w-auto lg:w-1/4">
+          {/* Mobile Hamburger Menu */}
+          <div className="dropdown lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost text-white px-0">
               <svg
                 aria-label="Menu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -42,8 +44,10 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <div>
-            <Link href="/" className="btn btn-ghost text-xl">
+
+          {/* Desktop Logo */}
+          <div className="hidden lg:flex items-center">
+            <Link href="/" className="btn btn-ghost text-xl px-0">
               <Image
                 src="/logo.png"
                 alt="FitLog Logo"
@@ -56,20 +60,37 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Center Links */}
-        <div className="navbar-center hidden lg:flex">
-          <ul className="flex items-center gap-2">
+        {/* Center Side: Mobile Logo & Desktop Links */}
+        <div className="navbar-center flex-1 justify-center">
+          {/* Mobile & Tablet Center Logo */}
+          <div className="flex lg:hidden items-center">
+            <Link href="/" className="btn btn-ghost text-xl px-0">
+              <Image
+                src="/logo.png"
+                alt="FitLog Logo"
+                width={28}
+                height={28}
+                className="w-7 h-7 object-contain"
+              />
+              <span className="text-[#FFFFFF] font-oswald text-2xl">FITLOG</span>
+            </Link>
+          </div>
+
+          {/* Center Links (Desktop only) */}
+          <ul className="hidden lg:flex items-center gap-2 whitespace-nowrap">
             <li>
               <Link
                 href="/"
-                className={`px-4 py-1.5 rounded-full text-[14px]  text-[#C2F800] font-inter bg-[#C2F800]/5`}>
+                className={`px-4 py-1.5 rounded-full text-[14px] text-[#C2F800] font-inter bg-[#C2F800]/5`}
+              >
                 Workouts
               </Link>
             </li>
             <li>
               <Link
                 href="/my-plan"
-                className={`px-4 py-1.5 rounded-full  text-[14px]  text-[#9CA3AF] font-inter`}>
+                className={`px-4 py-1.5 rounded-full text-[14px] text-[#9CA3AF] font-inter`}
+              >
                 My Plan
               </Link>
             </li>
@@ -77,24 +98,28 @@ const Navbar = () => {
         </div>
 
         {/* Right Links */}
-        <div className="navbar-end">
-          <ul className="flex items-center gap-2">
+        <div className="navbar-end w-auto lg:w-1/4">
+          <ul className="flex items-center gap-1 sm:gap-2 whitespace-nowrap">
             <li>
               <Link
                 href="/plan"
-                className={`px-4 py-1.5 rounded-full font-semibold text-[#D1D5DB] text-[14px]`}
+                className={`px-2 sm:px-4 py-1.5 rounded-full font-semibold text-[#D1D5DB] text-[13px] sm:text-[14px] flex items-center`}
               >
                 Plan
-                   <div className="badge bg-[#C2F800] border-0 btn-circle ml-3">0</div>
+                <div className="badge bg-[#C2F800] border-0 btn-circle ml-2 sm:ml-3 text-black font-bold">
+                  0
+                </div>
               </Link>
             </li>
             <li>
               <Link
                 href="/saved"
-                className={`px-4 py-1.5 rounded-full text-[14px]  text-[#9CA3AF]`}
+                className={`px-2 sm:px-4 py-1.5 rounded-full text-[13px] sm:text-[14px] text-[#9CA3AF] flex items-center`}
               >
                 Saved
-                <div className="badge bg-[#1E1E1E] border-gray-700 btn-circle ml-3 text-white ">0</div>
+                <div className="badge bg-[#1E1E1E] border-gray-700 btn-circle ml-2 sm:ml-3 text-white">
+                  0
+                </div>
               </Link>
             </li>
           </ul>
