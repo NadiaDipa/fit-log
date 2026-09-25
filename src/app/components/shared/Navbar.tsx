@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { WorkoutsContext } from "@/context/WorkoutsContext";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { myPlan = [], saved = [] } = useContext(WorkoutsContext) || {};
 
   return (
     <nav className="bg-[#1E1E1E]">
@@ -107,7 +109,7 @@ const Navbar = () => {
               >
                 Plan
                 <div className="badge bg-[#C2F800] border-0 btn-circle ml-2 sm:ml-3 text-black font-bold">
-                  0
+                  {myPlan?.length || 0}
                 </div>
               </Link>
             </li>
@@ -118,7 +120,7 @@ const Navbar = () => {
               >
                 Saved
                 <div className="badge bg-[#1E1E1E] border-gray-700 btn-circle ml-2 sm:ml-3 text-white">
-                  0
+                  {saved?.length || 0}
                 </div>
               </Link>
             </li>

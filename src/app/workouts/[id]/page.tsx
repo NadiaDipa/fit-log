@@ -1,3 +1,5 @@
+import AddToPlanButton from "@/app/components/buttons/AddToPlanButton";
+import SavedForLater from "@/app/components/buttons/SavedForLater";
 import { WorkoutLibraryTypes } from "@/app/types/workout";
 import Image from "next/image";
 import React from "react";
@@ -32,7 +34,7 @@ const WorkoutDetailsPage = async ({ params }: workoutDetailsPageProps) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start container max-w-6xl mx-auto">
         {/* Left Side: Image */}
         <div className="w-full h-full flex justify-center">
-          <figure className="w-full h-full relative min-h-[400px]">
+          <figure className="w-full h-full relative min-h-100">
             <Image
               src={singleWorkout?.image || ""}
               alt={singleWorkout?.name || "workout image"}
@@ -152,40 +154,15 @@ const WorkoutDetailsPage = async ({ params }: workoutDetailsPageProps) => {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-wrap items-center gap-4 pt-4">
-            <button className="flex items-center gap-2 bg-[#C2F800] hover:bg-[#b0e000] text-black font-bold text-sm px-6 py-3 rounded-xl transition-all">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Add to today's plan
-            </button>
-
-            <button className="flex items-center gap-2 bg-[#16181E] hover:bg-[#20242D] border border-gray-800 text-gray-300 font-semibold text-sm px-6 py-3 rounded-xl transition-all">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                />
-              </svg>
-              Save for later
-            </button>
+         <div className="flex flex-wrap items-center gap-4 pt-4">
+            {singleWorkout ? (
+              <>
+                <AddToPlanButton workout={singleWorkout} />
+                <SavedForLater workout={singleWorkout} />
+              </>
+            ) : (
+              <p className="text-gray-400 text-sm">Loading...</p>
+            )}
           </div>
         </div>
       </div>
