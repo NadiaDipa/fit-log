@@ -5,7 +5,7 @@ import { WorkoutLibraryTypes } from "@/app/types/workout";
 
 const getLibraries = async () : Promise<WorkoutLibraryTypes[]> => {
   try {
-    const response = await fetch("https://api.abcz.workers.dev/api/fitlog");
+    const response = await fetch(`https://api.abcz.workers.dev/api/fitlog`);
     const data = await response.json();
     return data;
   } catch (error) {

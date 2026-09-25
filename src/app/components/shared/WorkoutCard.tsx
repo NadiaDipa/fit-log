@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Clock, Flame, Star } from "lucide-react";
 import React from "react";
 import { WorkoutLibraryTypes } from "@/app/types/workout";
+import Link from "next/link";
 
 
 interface cardProps{
@@ -10,6 +11,7 @@ interface cardProps{
 
 const WorkoutCard = ({library} : cardProps) => {
  return (
+  <Link href={`/workouts/${library.id}`}>
     <div className="bg-[#121417] border border-white/10 rounded-2xl overflow-hidden">
       {/* Image Box */}
       <div className="relative w-full h-48 bg-[#1E1E1E]">
@@ -61,6 +63,7 @@ const WorkoutCard = ({library} : cardProps) => {
         </div>
       </div>
     </div>
+  </Link>
   );
 };
 
