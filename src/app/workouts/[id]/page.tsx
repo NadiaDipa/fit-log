@@ -30,11 +30,11 @@ const WorkoutDetailsPage = async ({ params }: workoutDetailsPageProps) => {
   const singleWorkout = await getLibraries(id);
 
   return (
-    <section className="bg-[#0F1115] min-h-screen py-10 px-4 md:px-8">
+    <section className="bg-[#0F1115] min-h-screen py-8 sm:py-10 px-4 sm:px-6 md:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start container max-w-6xl mx-auto">
         {/* Left Side: Image */}
         <div className="w-full h-full flex justify-center">
-          <figure className="w-full h-full relative min-h-100">
+          <figure className="w-full h-full relative min-h-72 sm:min-h-80 lg:min-h-100">
             <Image
               src={singleWorkout?.image || ""}
               alt={singleWorkout?.name || "workout image"}
@@ -50,7 +50,7 @@ const WorkoutDetailsPage = async ({ params }: workoutDetailsPageProps) => {
         <div className="flex flex-col space-y-6 text-white">
           {/* Title & Description */}
           <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide uppercase font-oswald text-white mb-3">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide uppercase font-oswald text-white mb-3">
               {singleWorkout?.name}
             </h1>
             <p className="text-[#8E95A2] text-sm md:text-base leading-relaxed">
@@ -71,7 +71,7 @@ const WorkoutDetailsPage = async ({ params }: workoutDetailsPageProps) => {
           </div>
 
           {/* Table */}
-          <div className="bg-[#16181E] border border-gray-800/80 rounded-2xl p-2 md:p-4 overflow-hidden">
+          <div className="bg-[#16181E] border border-gray-800/80 rounded-2xl p-2 sm:p-3 md:p-4 overflow-hidden">
             <table className="w-full text-sm border-separate border-spacing-y-3">
               <tbody className="divide-y divide-gray-800/40">
                 <tr className="text-gray-400">
@@ -154,7 +154,7 @@ const WorkoutDetailsPage = async ({ params }: workoutDetailsPageProps) => {
           </div>
 
           {/* Buttons */}
-         <div className="flex flex-wrap items-center gap-4 pt-4">
+          <div className="flex flex-wrap items-center gap-4 pt-4">
             {singleWorkout ? (
               <>
                 <AddToPlanButton workout={singleWorkout} />

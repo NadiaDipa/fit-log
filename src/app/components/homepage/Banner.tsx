@@ -5,41 +5,47 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <section className="py-8 md:py-15 bg-[#1E1E1E]">
-      <div className="card shadow-sm flex flex-col md:flex-row items-center justify-between container mx-auto border border-gray-800 py-8 md:py-15 px-6 md:px-0 rounded-2xl">
+    <section className="bg-[#0C0D10] py-6 md:py-12 px-4">
+      <div className="card container mx-auto flex flex-col items-center justify-between rounded-2xl border border-gray-800 bg-[#121417] px-6 py-8 shadow-sm md:py-12 lg:flex-row lg:px-12">
         
         {/* Content */}
-        <div className="card-body flex-1 p-0 md:ml-15 text-center md:text-left items-center md:items-start">
-          <div className="text-[#C2F800] font-inter">WORKOUT LIBRARY</div>
-          <h2 className="card-title text-3xl sm:text-4xl md:text-6xl font-bold font-oswald py-3 md:py-5 text-[#FFFFFF] lg:text-7xl">
+        <div className="card-body flex-1 p-0 text-center lg:text-left">
+          <div className="font-inter text-xs sm:text-sm font-semibold tracking-wider text-[#C2F800]">
+            WORKOUT LIBRARY
+          </div>
+
+          <h2 className="card-title py-3 font-oswald text-2xl font-bold text-[#FFFFFF] sm:text-4xl md:py-4 md:text-5xl lg:text-6xl justify-center lg:justify-start">
             TRAIN WITH INTENT. LOG EVERY SET.
           </h2>
-          <p className="text-[#9CA3AF] font-inter text-base md:text-xl">
-            FitLog is a dark, no-nonsense gym companion: pick a lift, lock it <br className="hidden md:inline" />
+
+          <p className="font-inter text-sm text-[#9CA3AF] sm:text-base md:text-lg">
+            FitLog is a dark, no-nonsense gym companion: pick a lift, lock it{" "}
+            <br className="hidden md:inline" />
             into today's plan, and watch the week's work add up.
           </p>
-          <div className="card-actions justify-center md:justify-start mt-6">
+
+          <div className="card-actions mt-6 justify-center lg:justify-start">
             <button
               onClick={() => {
                 document.getElementById("library")?.scrollIntoView({
                   behavior: "smooth",
                 });
               }}
-              className="btn bg-[#C2F800] text-black border-0 font-bold rounded font-oswald text-1xl px-6 py-4 cursor-pointer hover:bg-[#b0df00]"
+              className="btn cursor-pointer rounded border-0 bg-[#C2F800] px-6 py-3 font-oswald text-base font-bold text-black hover:bg-[#b0df00]"
             >
               BROWSE WORKOUTS
             </button>
           </div>
         </div>
 
-        {/* Image */}
-        <figure className="flex-1 flex justify-center md:justify-end items-center w-full md:w-auto mt-8 md:mt-0 md:mr-12">
+        {/* Image - Pushed down slightly so it aligns nicely with the button center */}
+        <figure className="mt-12 flex w-full flex-1 items-center justify-center lg:mt-0 lg:justify-end">
           <Image
             src="/banner.png"
-            alt="Album"
-            width={350}
-            height={350}
-            className="w-full max-w-xs md:max-w-sm h-auto object-contain"
+            alt="Workout Banner"
+            width={320}
+            height={320}
+            className="h-auto w-full max-w-[240px] sm:max-w-xs object-contain"
           />
         </figure>
 

@@ -20,30 +20,36 @@ FitLog is a responsive workout library and planning app optimized for all device
 ## 🛠️ Technologies Used
 
 - **React.js** — User interface & reusable components
+- **TypeScript / JavaScript (ES6+)** — Application logic and type-safe code
+- **Tailwind CSS / DaisyUI** — Responsive styling and modern UI design
 - **React Router** — Client-side routing and detail pages
-- **JavaScript (ES6+)** — Application logic and interactivity
-- **Tailwind CSS** — Responsive styling and modern UI design
-- **REST API** — Dynamic workout data fetching
-- **Local Storage** — State persistence for plans and saved workouts
+- **Vite** — Fast build tool and development server
+- **React-Toastify** — For displaying toast notifications
+- **React Icons** — Icons for buttons, statistics, and navigation
+- **JSON** — Storing technology or workout data
+- **Vercel** — Platform for live deployment and hosting
 - **Git & GitHub** — Version control and project management
 
 ---
 
 ## ✨ Key Features
 
-### 1. 🏋️ Workout Library & Details
-- Browse a collection of workouts categorized by major muscle groups.
-- View comprehensive exercise specs including equipment, difficulty, sets/reps, duration, calories, ratings, and step-by-step instructions.
+### 1. 🏋️ Workout Library
+- Browse a wide collection of workouts categorized by major muscle groups.
+- View key metrics like equipment, duration, calories, and ratings directly on the workout cards.
 
-### 2. 📋 Today's Workout Plan
+### 2. 🔍 Detailed Exercise View
+- Click on any workout to open a dedicated details page.
+- View comprehensive specs including difficulty, sets/reps, and step-by-step instructions.
+
+### 3. 📋 Today's Workout Plan
 - Add up to 5 exercises to your daily routine.
-- Track real-time metrics like total exercise count, workout duration, and burned calories.
-- Manage your daily routine with "Mark as Done", "Remove", and live navbar counters.
+- Track real-time statistics like total exercise count, workout duration, and burned calories with "Mark as Done" and remove options.
 
-### 3. ⭐ Saved Workouts
-- Save favorite workouts to access and plan for later.
-- Navbar counters update automatically for both plans and saved items.
+### 4. ⭐ Saved Workouts
+- Save favorite workouts to easily access and plan for them later.
+- Navbar counters update automatically in real-time for both your active plans and saved items.
 
-### 4. 📱 Responsive & Interactive
-- Fully responsive design optimized for mobile, tablet, and desktop screens.
-- Instant toast notifications for seamless user feedback on actions.
+### 5. 📱 Responsive Design & Toast Notifications
+- Fully responsive layout optimized seamlessly for mobile, tablet, and desktop screens.
+- Instant toast notifications to provide immediate feedback on user actions.

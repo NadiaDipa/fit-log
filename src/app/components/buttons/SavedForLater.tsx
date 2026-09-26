@@ -45,7 +45,7 @@ const SavedForLater = ({ workout }: { workout: any }) => {
     <div>
       <button
         onClick={handleSaveForLater}
-        className="flex items-center gap-2 rounded-lg border border-gray-700 px-4 py-3 text-[14px] font-medium text-gray-300 transition hover:bg-gray-800 cursor-pointer"
+        className="flex cursor-pointer items-center gap-2 rounded-lg border border-gray-700 px-3 py-2.5 text-[14px] font-medium text-gray-300 transition hover:bg-gray-800 sm:px-4 sm:py-3"
       >
         <Bookmark size={15} />
         Save for later

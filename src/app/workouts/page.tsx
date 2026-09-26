@@ -9,4 +9,4 @@ const WorkoutsPage = () => {
   )
 }
 
-export default WorkoutsPage
+export default WorkoutsPage;

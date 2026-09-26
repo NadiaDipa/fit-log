@@ -4,6 +4,7 @@ import Navbar from "./components/shared/Navbar";
 import WorkoutsProvider from "@/context/WorkoutsContext";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/shared/Footer";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "FitLog",
@@ -22,11 +23,11 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <WorkoutsProvider>
-          <Navbar />
+          <Suspense fallback={null}>
+            <Navbar />
+          </Suspense>
 
-          <main className="flex-1">
-            {children}
-          </main>
+          <main className="flex-1">{children}</main>
 
           <Toaster />
           <Footer />

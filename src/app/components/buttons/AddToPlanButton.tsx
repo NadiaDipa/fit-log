@@ -48,7 +48,7 @@ const AddToPlanButton = ({
   return (
     <div>
       <button
-        className="flex items-center gap-2 bg-[#C2F800] hover:bg-[#b0e000] text-black font-bold text-sm px-6 py-3 rounded-xl transition-all"
+        className="flex items-center gap-2 rounded-xl bg-[#C2F800] px-4 py-2.5 text-sm font-bold text-black transition-all hover:bg-[#b0e000] sm:px-6 sm:py-3"
         onClick={handleAddToPlan}
       >
         <svg
@@ -71,3 +71,4 @@ const AddToPlanButton = ({
 };
 
 export default AddToPlanButton;
+
