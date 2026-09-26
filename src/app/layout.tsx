@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/shared/Navbar";
 import WorkoutsProvider from "@/context/WorkoutsContext";
 import { Toaster } from "react-hot-toast";
+import Footer from "./components/shared/Footer";
 
 export const metadata: Metadata = {
   title: "FitLog",
@@ -21,6 +22,7 @@ export default function RootLayout({
           <Navbar />
           {children} 
           <Toaster/>
+          <Footer/>
         </WorkoutsProvider>
       </body>
     </html>
