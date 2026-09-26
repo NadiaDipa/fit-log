@@ -13,16 +13,23 @@ const Navbar = () => {
 
   const { myPlan = [], saved = [] } = useContext(WorkoutsContext) || {};
 
-  // Alada alada condition jate ekta active thakle onnyo ta active na hoy
-  const isMyPlanActive = pathname === "/my-plan" && tab === "my-plan"; // Jodi alada tab thake
-  const isPlanActive = pathname === "/my-plan" && (tab === "plan" || !tab); // Default ba plan tab
-  const isSavedActive = pathname === "/my-plan" && tab === "saved";
+  // Active tab conditions
+  const isMyPlanActive =
+    pathname === "/my-plan" && (tab === "plan" || !tab);
+
+  const isPlanActive =
+    pathname === "/my-plan" && (tab === "plan" || !tab);
+
+  const isSavedActive =
+    pathname === "/my-plan" && tab === "saved";
 
   return (
     <nav className="sticky top-0 z-50 bg-[#0C0D10] backdrop-blur-md border-b border-white/10">
       <div className="navbar container mx-auto py-4 px-4 lg:py-6">
+
         {/* Left Side: Mobile Menu & Desktop Logo */}
         <div className="navbar-start w-auto lg:w-1/4">
+
           {/* Mobile Hamburger Menu */}
           <div className="dropdown lg:hidden">
             <div
@@ -46,6 +53,7 @@ const Navbar = () => {
                 />
               </svg>
             </div>
+
             <ul
               tabIndex={-1}
               className="menu menu-sm dropdown-content bg-[#1E1E1E] text-white rounded-box z-1 mt-3 w-52 p-2 shadow border border-white/10"
@@ -58,10 +66,13 @@ const Navbar = () => {
                   Workouts
                 </Link>
               </li>
+
               <li>
                 <Link
-                  href="/my-plan"
-                  className={pathname === "/my-plan" ? "text-[#C2F800]" : ""}
+                  href="/my-plan?tab=plan"
+                  className={
+                    pathname === "/my-plan" ? "text-[#C2F800]" : ""
+                  }
                 >
                   My Plan
                 </Link>
@@ -82,6 +93,7 @@ const Navbar = () => {
                 height={28}
                 className="w-7 h-7 object-contain"
               />
+
               <span className="text-[#FFFFFF] font-oswald text-2xl">
                 FITLOG
               </span>
@@ -89,8 +101,10 @@ const Navbar = () => {
           </div>
         </div>
 
+
         {/* Center Side: Mobile Logo & Desktop Links */}
         <div className="navbar-center flex-1 justify-center">
+
           {/* Mobile & Tablet Center Logo */}
           <div className="flex lg:hidden items-center">
             <Link
@@ -104,14 +118,17 @@ const Navbar = () => {
                 height={28}
                 className="w-7 h-7 object-contain"
               />
+
               <span className="text-[#FFFFFF] font-oswald text-2xl">
                 FITLOG
               </span>
             </Link>
           </div>
 
+
           {/* Center Links (Desktop only) */}
           <ul className="hidden lg:flex items-center gap-2 whitespace-nowrap">
+
             <li>
               <Link
                 href="/"
@@ -124,9 +141,10 @@ const Navbar = () => {
                 Workouts
               </Link>
             </li>
+
             <li>
               <Link
-                href="/my-plan?tab=my-plan"
+                href="/my-plan?tab=plan"
                 className={`px-4 py-1.5 rounded-full text-[14px] font-inter transition-all ${
                   isMyPlanActive
                     ? "text-[#C2F800] bg-[#C2F800]/5"
@@ -136,12 +154,17 @@ const Navbar = () => {
                 My Plan
               </Link>
             </li>
+
           </ul>
         </div>
 
+
         {/* Right Links */}
         <div className="navbar-end w-auto lg:w-1/4">
+
           <ul className="flex items-center gap-1 sm:gap-2 whitespace-nowrap">
+
+            {/* Plan */}
             <li>
               <Link
                 href="/my-plan?tab=plan"
@@ -152,7 +175,7 @@ const Navbar = () => {
                 }`}
               >
                 Plan
-                {/* Plan Badge - Solid background */}
+
                 <div
                   className={`badge border-0 btn-circle ml-2 sm:ml-3 ${
                     isPlanActive
@@ -164,6 +187,9 @@ const Navbar = () => {
                 </div>
               </Link>
             </li>
+
+
+            {/* Saved */}
             <li>
               <Link
                 href="/my-plan?tab=saved"
@@ -174,7 +200,7 @@ const Navbar = () => {
                 }`}
               >
                 Saved
-                {/* Saved Badge - Outline/border only */}
+
                 <div
                   className={`badge btn-circle ml-2 sm:ml-3 bg-transparent border ${
                     isSavedActive
@@ -186,8 +212,10 @@ const Navbar = () => {
                 </div>
               </Link>
             </li>
+
           </ul>
         </div>
+
       </div>
     </nav>
   );

@@ -12,14 +12,32 @@ const SavedForLater = ({ workout }: { workout: any }) => {
     const isAlreadySaved = saved.some((item) => item.id === workout.id);
 
     if (isAlreadySaved) {
-      toast("This is already saved!", { icon: "ℹ️" });
+      toast("Workout is already saved", {
+        duration: 2500,
+        icon: "ℹ️",
+        style: {
+          background: "#1A1A1A",
+          color: "#F3F4F6",
+          border: "1px solid #374151",
+          borderRadius: "12px",
+          padding: "12px 16px",
+        },
+      });
+
       return;
     }
 
     setSaved?.([...saved, workout]);
 
-    toast("This is added to save later", {
-      icon: "📌",
+    toast.success("Workout saved for later", {
+      duration: 2500,
+      style: {
+        background: "#1A1A1A",
+        color: "#C2F800",
+        border: "1px solid #C2F800",
+        borderRadius: "12px",
+        padding: "12px 16px",
+      },
     });
   };
 

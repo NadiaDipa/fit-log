@@ -17,12 +17,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="light" className="h-full antialiased">
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+      <body
+        className="min-h-full flex flex-col bg-[#0C0D10]"
+        suppressHydrationWarning
+      >
         <WorkoutsProvider>
           <Navbar />
-          {children} 
-          <Toaster/>
-          <Footer/>
+
+          <main className="flex-1">
+            {children}
+          </main>
+
+          <Toaster />
+          <Footer />
         </WorkoutsProvider>
       </body>
     </html>

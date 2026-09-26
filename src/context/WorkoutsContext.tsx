@@ -1,63 +1,75 @@
-'use client'
+"use client";
 
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 interface WorkoutsContextType {
   myPlan: any[];
   setPlan: React.Dispatch<React.SetStateAction<any[]>>;
   saved: any[];
   setSaved: React.Dispatch<React.SetStateAction<any[]>>;
+  isLoading: boolean;
 }
 
-export const WorkoutsContext = createContext<WorkoutsContextType | undefined>(undefined);
+export const WorkoutsContext = createContext<
+  WorkoutsContextType | undefined
+>(undefined);
 
 const WorkoutsProvider = ({ children }: { children: React.ReactNode }) => {
-  const [myPlan, setMyPlan] = useState<any[]>(() => {
-    if (typeof window !== 'undefined') {
-      const savedPlan = localStorage.getItem('myWorkoutPlan');
-      return savedPlan ? JSON.parse(savedPlan) : [];
-    }
-    return [];
-  });
+  const [myPlan, setMyPlan] = useState<any[]>([]);
+  const [saved, setSavedWorkouts] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [saved, setSavedWorkouts] = useState<any[]>(() => {
-    if (typeof window !== 'undefined') {
-      const savedWorkouts = localStorage.getItem('savedWorkouts');
-      return savedWorkouts ? JSON.parse(savedWorkouts) : [];
+  useEffect(() => {
+    const savedPlan = localStorage.getItem("myWorkoutPlan");
+
+    if (savedPlan) {
+      setMyPlan(JSON.parse(savedPlan));
     }
-    return [];
-  });
+
+    const savedWorkouts = localStorage.getItem("savedWorkouts");
+
+    if (savedWorkouts) {
+      setSavedWorkouts(JSON.parse(savedWorkouts));
+    }
+
+    setIsLoading(false);
+  }, []);
 
   const setPlan = (action: any) => {
     setMyPlan((prevPlan) => {
-      const updatedPlan = typeof action === 'function' ? action(prevPlan) : action;
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('myWorkoutPlan', JSON.stringify(updatedPlan));
-      }
+      const updatedPlan =
+        typeof action === "function" ? action(prevPlan) : action;
+
+      localStorage.setItem("myWorkoutPlan", JSON.stringify(updatedPlan));
+
       return updatedPlan;
     });
   };
 
   const setSaved = (action: any) => {
     setSavedWorkouts((prevSaved) => {
-      const updatedSaved = typeof action === 'function' ? action(prevSaved) : action;
-      
-   
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('savedWorkouts', JSON.stringify(updatedSaved));
-      }
+      const updatedSaved =
+        typeof action === "function" ? action(prevSaved) : action;
+
+      localStorage.setItem("savedWorkouts", JSON.stringify(updatedSaved));
+
       return updatedSaved;
     });
   };
 
   const sharedData = {
-    myPlan, 
+    myPlan,
     setPlan,
-    saved, 
-    setSaved
-  }
+    saved,
+    setSaved,
+    isLoading,
+  };
 
-  return <WorkoutsContext.Provider value={sharedData}>{children}</WorkoutsContext.Provider>;
+  return (
+    <WorkoutsContext.Provider value={sharedData}>
+      {children}
+    </WorkoutsContext.Provider>
+  );
 };
 
 export default WorkoutsProvider;
