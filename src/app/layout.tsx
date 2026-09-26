@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/shared/Navbar";
 import WorkoutsProvider from "@/context/WorkoutsContext";
-import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {

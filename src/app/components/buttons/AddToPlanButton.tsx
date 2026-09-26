@@ -17,25 +17,25 @@ const AddToPlanButton = ({ workout }: { workout: WorkoutLibraryTypes }) => {
           icon: "⚠️",
           style: {
             background: "#1E1E1E",
-            color: "#EF4444", 
+            color: "#EF4444",
             border: "1px solid #EF4444",
           },
         })
       : (
-       setPlan?.([...myPlan, workout]),
-        toast.success("Successfully added to plan! 💪", {
-          style: {
-            background: '#1E1E1E',
-            color: '#F59E0B',
-            border: '1px solid #F59E0B',
-            fontWeight: '600',
-          },
-          iconTheme: {
-            primary: '#F59E0B',
-            secondary: '#1E1E1E',
-          },
-        })
-      )
+          setPlan?.([...myPlan, workout]),
+          toast.success("Successfully added to plan! 💪", {
+            style: {
+              background: '#1E1E1E',
+              color: '#F59E0B',
+              border: '1px solid #F59E0B',
+              fontWeight: '600',
+            },
+            iconTheme: {
+              primary: '#F59E0B',
+              secondary: '#1E1E1E',
+            },
+          })
+        )
   };
 
   return (

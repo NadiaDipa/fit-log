@@ -3,12 +3,20 @@
 import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { WorkoutsContext } from "@/context/WorkoutsContext";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab");
+  
   const { myPlan = [], saved = [] } = useContext(WorkoutsContext) || {};
+
+  // Alada alada condition jate ekta active thakle onnyo ta active na hoy
+  const isMyPlanActive = pathname === "/my-plan" && tab === "my-plan"; // Jodi alada tab thake
+  const isPlanActive = pathname === "/my-plan" && (tab === "plan" || !tab); // Default ba plan tab
+  const isSavedActive = pathname === "/my-plan" && tab === "saved";
 
   return (
     <nav className="bg-[#1E1E1E]">
@@ -39,10 +47,10 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-[#1E1E1E] text-white rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <Link href="/">Workouts</Link>
+                <Link href="/" className={pathname === "/" ? "text-[#C2F800]" : ""}>Workouts</Link>
               </li>
               <li>
-                <Link href="/my-plan">My Plan</Link>
+                <Link href="/my-plan" className={pathname === "/my-plan" ? "text-[#C2F800]" : ""}>My Plan</Link>
               </li>
             </ul>
           </div>
@@ -83,15 +91,23 @@ const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className={`px-4 py-1.5 rounded-full text-[14px] text-[#C2F800] font-inter bg-[#C2F800]/5`}
+                className={`px-4 py-1.5 rounded-full text-[14px] font-inter transition-all ${
+                  pathname === "/"
+                    ? "text-[#C2F800] bg-[#C2F800]/5"
+                    : "text-[#9CA3AF] hover:text-white"
+                }`}
               >
                 Workouts
               </Link>
             </li>
             <li>
               <Link
-                href="/my-plan"
-                className={`px-4 py-1.5 rounded-full text-[14px] text-[#9CA3AF] font-inter`}
+                href="/my-plan?tab=my-plan"
+                className={`px-4 py-1.5 rounded-full text-[14px] font-inter transition-all ${
+                  isMyPlanActive
+                    ? "text-[#C2F800] bg-[#C2F800]/5"
+                    : "text-[#9CA3AF] hover:text-white"
+                }`}
               >
                 My Plan
               </Link>
@@ -104,22 +120,34 @@ const Navbar = () => {
           <ul className="flex items-center gap-1 sm:gap-2 whitespace-nowrap">
             <li>
               <Link
-                href="/plan"
-                className={`px-2 sm:px-4 py-1.5 rounded-full font-semibold text-[#D1D5DB] text-[13px] sm:text-[14px] flex items-center`}
+                href="/my-plan?tab=plan"
+                className={`px-2 sm:px-4 py-1.5 rounded-full font-semibold text-[13px] sm:text-[14px] flex items-center transition-all ${
+                  isPlanActive
+                    ? "text-[#C2F800] bg-[#C2F800]/5"
+                    : "text-[#D1D5DB] hover:text-white"
+                }`}
               >
                 Plan
-                <div className="badge bg-[#C2F800] border-0 btn-circle ml-2 sm:ml-3 text-black font-bold">
+                <div className={`badge border-0 btn-circle ml-2 sm:ml-3 ${
+                  isPlanActive ? "bg-[#C2F800] text-black font-bold" : "bg-[#2A2A2A] text-white"
+                }`}>
                   {myPlan?.length || 0}
                 </div>
               </Link>
             </li>
             <li>
               <Link
-                href="/saved"
-                className={`px-2 sm:px-4 py-1.5 rounded-full text-[13px] sm:text-[14px] text-[#9CA3AF] flex items-center`}
+                href="/my-plan?tab=saved"
+                className={`px-2 sm:px-4 py-1.5 rounded-full text-[13px] sm:text-[14px] flex items-center transition-all ${
+                  isSavedActive
+                    ? "text-[#C2F800] bg-[#C2F800]/5"
+                    : "text-[#9CA3AF] hover:text-white"
+                }`}
               >
                 Saved
-                <div className="badge bg-[#1E1E1E] border-gray-700 btn-circle ml-2 sm:ml-3 text-white">
+                <div className={`badge border-0 btn-circle ml-2 sm:ml-3 ${
+                  isSavedActive ? "bg-[#C2F800] text-black font-bold" : "bg-[#2A2A2A] text-white"
+                }`}>
                   {saved?.length || 0}
                 </div>
               </Link>

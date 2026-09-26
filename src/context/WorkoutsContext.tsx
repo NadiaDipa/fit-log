@@ -9,19 +9,46 @@ interface WorkoutsContextType {
   setSaved: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
-
-
-
-// create context
 export const WorkoutsContext = createContext<WorkoutsContextType | undefined>(undefined);
 
-
-
-//  provider 
 const WorkoutsProvider = ({ children }: { children: React.ReactNode }) => {
-  const [myPlan, setPlan] = useState<any[]>([]);
-  const [saved, setSaved] = useState<any[]>([]);
+  const [myPlan, setMyPlan] = useState<any[]>(() => {
+    if (typeof window !== 'undefined') {
+      const savedPlan = localStorage.getItem('myWorkoutPlan');
+      return savedPlan ? JSON.parse(savedPlan) : [];
+    }
+    return [];
+  });
 
+  const [saved, setSavedWorkouts] = useState<any[]>(() => {
+    if (typeof window !== 'undefined') {
+      const savedWorkouts = localStorage.getItem('savedWorkouts');
+      return savedWorkouts ? JSON.parse(savedWorkouts) : [];
+    }
+    return [];
+  });
+
+  const setPlan = (action: any) => {
+    setMyPlan((prevPlan) => {
+      const updatedPlan = typeof action === 'function' ? action(prevPlan) : action;
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('myWorkoutPlan', JSON.stringify(updatedPlan));
+      }
+      return updatedPlan;
+    });
+  };
+
+  const setSaved = (action: any) => {
+    setSavedWorkouts((prevSaved) => {
+      const updatedSaved = typeof action === 'function' ? action(prevSaved) : action;
+      
+   
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('savedWorkouts', JSON.stringify(updatedSaved));
+      }
+      return updatedSaved;
+    });
+  };
 
   const sharedData = {
     myPlan, 
