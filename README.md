@@ -6,7 +6,7 @@
 
 ## 🚀 Live Project
 
-🔗 **Live Demo:** https://fit-log-nadia-dipa.vercel.app/ 
+🔗 **Live Demo:** https://fit-log-nadia-dipa.vercel.app/ <br/>
 🔗 **Repository:** https://github.com/NadiaDipa/fit-log
 
 ---
