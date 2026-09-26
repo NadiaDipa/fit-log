@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 
@@ -17,7 +19,14 @@ const Banner = () => {
             into today's plan, and watch the week's work add up.
           </p>
           <div className="card-actions justify-center md:justify-start mt-6">
-            <button className="btn bg-[#C2F800] text-black border-0 font-bold rounded font-oswald text-1xl px-6 py-4">
+            <button
+              onClick={() => {
+                document.getElementById("library")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+              className="btn bg-[#C2F800] text-black border-0 font-bold rounded font-oswald text-1xl px-6 py-4 cursor-pointer hover:bg-[#b0df00]"
+            >
               BROWSE WORKOUTS
             </button>
           </div>

@@ -152,6 +152,7 @@ const Navbar = () => {
                 }`}
               >
                 Plan
+                {/* Plan Badge - Solid background */}
                 <div
                   className={`badge border-0 btn-circle ml-2 sm:ml-3 ${
                     isPlanActive
@@ -173,11 +174,12 @@ const Navbar = () => {
                 }`}
               >
                 Saved
+                {/* Saved Badge - Outline/border only */}
                 <div
-                  className={`badge border-0 btn-circle ml-2 sm:ml-3 ${
+                  className={`badge btn-circle ml-2 sm:ml-3 bg-transparent border ${
                     isSavedActive
-                      ? "bg-[#C2F800] text-black font-bold"
-                      : "bg-[#2A2A2A] text-white"
+                      ? "border-[#C2F800] text-[#C2F800]"
+                      : "border-white/20 text-white"
                   }`}
                 >
                   {saved?.length || 0}

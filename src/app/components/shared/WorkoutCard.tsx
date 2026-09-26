@@ -12,13 +12,13 @@ const WorkoutCard = ({library} : cardProps) => {
  return (
   <Link href={`/workouts/${library.id}`} className="block h-full">
     <div className="bg-[#121417] border border-white/10 rounded-2xl overflow-hidden hover:border-[#C2F800]/50 transition-all duration-300 flex flex-col h-full">
-      {/* Image Box */}
-      <div className="relative w-full h-72 bg-[#0d0f12] overflow-hidden flex items-center justify-center">
+      {/* Image Box - Height bariye h-80 kora holo ebong object-cover diye left-right space sorano holo */}
+      <div className="relative w-full h-80 bg-[#0d0f12] overflow-hidden">
         <Image
           src={library.image}
           alt={library.name}
           fill
-          className="object-cover object-top"
+          className="object-cover object-center"
         />
       </div>
 

@@ -18,7 +18,7 @@ const Libraries = async () => {
   const librariesData = await getLibraries();
 
   return (
-    <main className="py-18 text-white bg-[#1E1E1E]">
+    <main className="py-18 text-white bg-[#1E1E1E]" id="library">
       <div className="container mx-auto px-4">
         <h1 className="text-[#FFFFFF] text-4xl font-oswald pb-3 font-bold uppercase">
           THE LIBRARY
