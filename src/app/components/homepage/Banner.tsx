@@ -45,7 +45,7 @@ const Banner = () => {
             alt="Workout Banner"
             width={320}
             height={320}
-            className="h-auto w-full max-w-[240px] sm:max-w-xs object-contain"
+            className="h-auto w-full max-w-60 sm:max-w-xs object-contain"
           />
         </figure>
 
