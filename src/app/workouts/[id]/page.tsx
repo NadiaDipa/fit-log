@@ -15,7 +15,7 @@ const getLibraries = async (
 ): Promise<WorkoutLibraryTypes | null> => {
   try {
     const response = await fetch(
-      `https://api.abcz.workers.dev/api/fitlog/${id}`,
+      `https://api.api-store.workers.dev/api/fitlog/${id}`,
     );
     const data = await response.json();
     return data;
