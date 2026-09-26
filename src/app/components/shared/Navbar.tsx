@@ -10,7 +10,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab");
-  
+
   const { myPlan = [], saved = [] } = useContext(WorkoutsContext) || {};
 
   // Alada alada condition jate ekta active thakle onnyo ta active na hoy
@@ -19,13 +19,17 @@ const Navbar = () => {
   const isSavedActive = pathname === "/my-plan" && tab === "saved";
 
   return (
-    <nav className="bg-[#1E1E1E]">
-      <div className="navbar container mx-auto py-4 px-4 lg:py-8">
+    <nav className="sticky top-0 z-50 bg-[#0C0D10] backdrop-blur-md border-b border-white/10">
+      <div className="navbar container mx-auto py-4 px-4 lg:py-6">
         {/* Left Side: Mobile Menu & Desktop Logo */}
         <div className="navbar-start w-auto lg:w-1/4">
           {/* Mobile Hamburger Menu */}
           <div className="dropdown lg:hidden">
-            <div tabIndex={0} role="button" className="btn btn-ghost text-white px-0">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost text-white px-0"
+            >
               <svg
                 aria-label="Menu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,20 +48,33 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={-1}
-              className="menu menu-sm dropdown-content bg-[#1E1E1E] text-white rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-[#1E1E1E] text-white rounded-box z-1 mt-3 w-52 p-2 shadow border border-white/10"
             >
               <li>
-                <Link href="/" className={pathname === "/" ? "text-[#C2F800]" : ""}>Workouts</Link>
+                <Link
+                  href="/"
+                  className={pathname === "/" ? "text-[#C2F800]" : ""}
+                >
+                  Workouts
+                </Link>
               </li>
               <li>
-                <Link href="/my-plan" className={pathname === "/my-plan" ? "text-[#C2F800]" : ""}>My Plan</Link>
+                <Link
+                  href="/my-plan"
+                  className={pathname === "/my-plan" ? "text-[#C2F800]" : ""}
+                >
+                  My Plan
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Desktop Logo */}
           <div className="hidden lg:flex items-center">
-            <Link href="/" className="btn btn-ghost text-xl px-0">
+            <Link
+              href="/"
+              className="btn btn-ghost border-0 hover:bg-transparent focus:bg-transparent active:bg-transparent shadow-none text-xl px-0"
+            >
               <Image
                 src="/logo.png"
                 alt="FitLog Logo"
@@ -65,7 +82,9 @@ const Navbar = () => {
                 height={28}
                 className="w-7 h-7 object-contain"
               />
-              <span className="text-[#FFFFFF] font-oswald text-2xl">FITLOG</span>
+              <span className="text-[#FFFFFF] font-oswald text-2xl">
+                FITLOG
+              </span>
             </Link>
           </div>
         </div>
@@ -74,7 +93,10 @@ const Navbar = () => {
         <div className="navbar-center flex-1 justify-center">
           {/* Mobile & Tablet Center Logo */}
           <div className="flex lg:hidden items-center">
-            <Link href="/" className="btn btn-ghost text-xl px-0">
+            <Link
+              href="/"
+              className="btn btn-ghost text-xl px-0 hover:bg-transparent"
+            >
               <Image
                 src="/logo.png"
                 alt="FitLog Logo"
@@ -82,7 +104,9 @@ const Navbar = () => {
                 height={28}
                 className="w-7 h-7 object-contain"
               />
-              <span className="text-[#FFFFFF] font-oswald text-2xl">FITLOG</span>
+              <span className="text-[#FFFFFF] font-oswald text-2xl">
+                FITLOG
+              </span>
             </Link>
           </div>
 
@@ -128,9 +152,13 @@ const Navbar = () => {
                 }`}
               >
                 Plan
-                <div className={`badge border-0 btn-circle ml-2 sm:ml-3 ${
-                  isPlanActive ? "bg-[#C2F800] text-black font-bold" : "bg-[#2A2A2A] text-white"
-                }`}>
+                <div
+                  className={`badge border-0 btn-circle ml-2 sm:ml-3 ${
+                    isPlanActive
+                      ? "bg-[#C2F800] text-black font-bold"
+                      : "bg-[#2A2A2A] text-white"
+                  }`}
+                >
                   {myPlan?.length || 0}
                 </div>
               </Link>
@@ -145,9 +173,13 @@ const Navbar = () => {
                 }`}
               >
                 Saved
-                <div className={`badge border-0 btn-circle ml-2 sm:ml-3 ${
-                  isSavedActive ? "bg-[#C2F800] text-black font-bold" : "bg-[#2A2A2A] text-white"
-                }`}>
+                <div
+                  className={`badge border-0 btn-circle ml-2 sm:ml-3 ${
+                    isSavedActive
+                      ? "bg-[#C2F800] text-black font-bold"
+                      : "bg-[#2A2A2A] text-white"
+                  }`}
+                >
                   {saved?.length || 0}
                 </div>
               </Link>

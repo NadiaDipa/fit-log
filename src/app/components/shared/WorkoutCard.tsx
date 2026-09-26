@@ -4,27 +4,26 @@ import React from "react";
 import { WorkoutLibraryTypes } from "@/app/types/workout";
 import Link from "next/link";
 
-
 interface cardProps{
   library: WorkoutLibraryTypes;
 }
 
 const WorkoutCard = ({library} : cardProps) => {
  return (
-  <Link href={`/workouts/${library.id}`}>
-    <div className="bg-[#121417] border border-white/10 rounded-2xl overflow-hidden">
+  <Link href={`/workouts/${library.id}`} className="block h-full">
+    <div className="bg-[#121417] border border-white/10 rounded-2xl overflow-hidden hover:border-[#C2F800]/50 transition-all duration-300 flex flex-col h-full">
       {/* Image Box */}
-      <div className="relative w-full h-48 bg-[#1E1E1E]">
+      <div className="relative w-full h-72 bg-[#0d0f12] overflow-hidden flex items-center justify-center">
         <Image
           src={library.image}
           alt={library.name}
           fill
-          className="object-cover"
+          className="object-cover object-top"
         />
       </div>
 
       {/* Badges */}
-      <div className="flex gap-2 mt-4 mb-3 px-5">
+      <div className="flex flex-wrap gap-2 mt-4 mb-3 px-5">
         {library.muscleGroups?.map((group, index) => (
           <span
             key={index}
@@ -46,25 +45,25 @@ const WorkoutCard = ({library} : cardProps) => {
       </p>
 
       {/* Status */}
-      <div className="text-xs text-[#9CA3AF] border-t border-white/10 py-4 flex items-center gap-6 px-5">
-        <div className="flex items-center gap-2">
-          <Clock className="w-4 h-4" />
+      <div className="text-xs text-[#9CA3AF] border-t border-white/10 py-4 flex items-center justify-between px-5 mt-auto">
+        <div className="flex items-center gap-1.5">
+          <Clock className="w-4 h-4 text-[#C2F800]" />
           <span className="text-sm">{library.duration} min</span>
         </div>
 
-        <div className="flex items-center gap-2">
-          <Flame className="w-4 h-4" />
+        <div className="flex items-center gap-1.5">
+          <Flame className="w-4 h-4 text-[#C2F800]" />
           <span className="text-sm">{library.caloriesBurned} kcal</span>
         </div>
 
-        <div className="flex items-center gap-2">
-          <Star className="w-4 h-4" />
+        <div className="flex items-center gap-1.5">
+          <Star className="w-4 h-4 text-[#C2F800]" />
           <span className="text-sm">{library.rating}</span>
         </div>
       </div>
     </div>
   </Link>
-  );
+ );
 };
 
 export default WorkoutCard;
